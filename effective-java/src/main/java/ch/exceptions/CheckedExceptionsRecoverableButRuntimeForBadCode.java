@@ -24,14 +24,11 @@ public class CheckedExceptionsRecoverableButRuntimeForBadCode {
 			case 2: throw new ArrayIndexOutOfBoundsException();
 			//break;
 			}
-/*Java7 multi catch } catch (FileNotFoundException | ArrayIndexOutOfBoundsExceptione ) {
- * use multi catch to handle exceptions in the same block
- */
-		} catch (FileNotFoundException e ) {
-
-		} catch (ArrayIndexOutOfBoundsException ex) {
-
-		}
+		} catch (FileNotFoundException | ArrayIndexOutOfBoundsException  e ) {
+			/*Java7 multi catch } catch (FileNotFoundException | ArrayIndexOutOfBoundsExceptione ) {
+			 * use multi catch to handle exceptions in the same block
+			 */
+		} 
 	}
 }
 

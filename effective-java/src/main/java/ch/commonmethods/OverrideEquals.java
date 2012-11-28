@@ -31,4 +31,13 @@ public class OverrideEquals {
 	}
 	
 	// JDK7 use http://docs.oracle.com/javase/7/docs/api/index.html equals or deepEquals
+	/*
+	 * @see http://docs.oracle.com/javase/7/docs/api/java/util/Objects.html#deepEquals(java.lang.Object,%20java.lang.Object)
+	 */
+	public boolean deepEquals(Object obj) {
+		if(obj instanceof OverrideEquals) {
+			return java.util.Objects.deepEquals(this,((OverrideEquals)obj)); 
+		}
+		return false;
+	}
 }
