@@ -7,6 +7,8 @@ package ch.concurrency;
 public class SynchronizeAccessToSharedMutables {
 	
 /*
+ * Happens-before guarantees
+ * @see http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/package-summary.html#MemoryVisibility
  * @see StopThread
  */
 
