@@ -16,7 +16,8 @@ public class CallableFutures {
 	
 	public static void main(String[] args) {
 		ExecutorService executor = Executors.newFixedThreadPool(NTHREADS);
-		List<Future<Long>> list = new ArrayList();//Java 7 Type inference
+		@SuppressWarnings("rawtypes")//OK in Java 7 Type inference not a raw type
+		List<Future<Long>> list = new ArrayList();
 		for(int i = 0; i < 20000; i++) {
 			Callable<Long> worker = new MyCallable();
 			Future<Long> submit = executor.submit(worker);
