@@ -29,5 +29,10 @@
     		<artifactId>cxf-rt-frontend-jaxrs</artifactId>
     		<version>2.7.0</version>
     	</dependency>
+    	<dependency>
+    		<groupId>org.spark-project</groupId>
+    		<artifactId>spark-core_2.9.2</artifactId>
+    		<version>0.6.1</version>
+    	</dependency>
     </dependencies>
 </project>
