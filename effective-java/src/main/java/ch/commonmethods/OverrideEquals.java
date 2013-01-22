@@ -6,7 +6,8 @@ public class OverrideEquals {
 	private String example = "a string";
 
 /* Item 8 
- * don't override if +each instance is inherently unique
+ * don't override if 
+ * +each instance is inherently unique
  * +don't care about logical equality
  * +a superclass has already overridden equals and its behavior is ok for the subclass
  * +class is private or package private and equals will never be invoked

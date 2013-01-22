@@ -2,11 +2,11 @@ package ch.commonmethods;
 import com.google.common.base.Objects;
 
 public class OverrideHashCode {
-	/* Item 9 always override hashCode is equals is overridden. 
+	/* Item 9 always override hashCode if equals is overridden. 
 	 * This is necessary for use in hash based collections
 	 * Must be consistent in application scope
 	 * equals() -> equal hashCode MOST IMPORTANT this is the contract 
-	 * !equals() Does not require equal hashCode But it is prefered
+	 * !equals() Does not require equal hashCode But it is preferred
 	 */
 	private String x;
 	private String y;

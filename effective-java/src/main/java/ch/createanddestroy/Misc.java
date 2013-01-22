@@ -15,7 +15,7 @@ public class Misc {
 	}
 	// primitives save creation over boxed primitives
 	
-	// elimanate obsolete references by defining them in the narrowest possible scope
+	// eliminate obsolete references by defining them in the narrowest possible scope
 	
 	// Item 7 avoid finalizers Java runs them when they are about to be garbage collected.
 	// GC runs in a low priority thread and may not run at all

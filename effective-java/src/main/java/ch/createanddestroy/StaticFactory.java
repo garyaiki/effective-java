@@ -13,7 +13,7 @@ import com.google.common.util.concurrent.Service;
 import com.google.common.util.concurrent.Service.State;
 
 public class StaticFactory {
-	/* Item 1 static factory methods +have names +not required to make everytime invoked
+	/* Item 1 static factory methods +have names +not required to make every time invoked
 	 * +can return subtype +less verbose with parameterized types */
 	public static Boolean makeBoolean(boolean b) {
 		return b ? Boolean.TRUE : Boolean.FALSE;
