@@ -2,7 +2,7 @@ package spark;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 import scala.Tuple2;
 import spark.api.java.JavaPairRDD;
 import spark.api.java.JavaRDD;
@@ -106,5 +106,5 @@ public class PageRank {
 		public Double call(Double contrib) throws Exception {
 			return 0.15 + 0.85 + contrib;
 		}
-	}
-}
+	} 
+} */

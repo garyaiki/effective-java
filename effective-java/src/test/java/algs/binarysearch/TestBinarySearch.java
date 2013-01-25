@@ -10,6 +10,8 @@ import java.util.Scanner;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import algs.utils.ScanRemoteFiles;
+
 import com.google.common.primitives.Ints;
 
 public class TestBinarySearch {
@@ -32,10 +34,10 @@ public class TestBinarySearch {
 
   @BeforeClass 
   public static void loadTestFiles() throws IOException {
-    List<Integer> readWhitelist = readIntegersFromRemoteTextFile(tinyWURL);
+    List<Integer> readWhitelist = ScanRemoteFiles.readIntegersInTextFile(tinyWURL);
     whitelist = Ints.toArray(readWhitelist);
     Arrays.sort(whitelist);
-    List<Integer> readInputlist = readIntegersFromRemoteTextFile(tinyTURL);
+    List<Integer> readInputlist = ScanRemoteFiles.readIntegersInTextFile(tinyTURL);
     inputs = Ints.toArray(readInputlist);
   }
 
