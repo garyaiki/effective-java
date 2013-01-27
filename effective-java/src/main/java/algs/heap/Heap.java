@@ -4,6 +4,7 @@ package algs.heap;
  * @author garystruthers
  * Array is any type that implements Comparable
  * @see http://stackoverflow.com/questions/1770972/java-generics-compareto-and-capture1-of
+ * @see http://docs.oracle.com/javase/tutorial/extra/generics/morefun.html
  */
 public class Heap {
   
@@ -18,7 +19,7 @@ public class Heap {
     }
   }
 
-  private static <U extends Comparable<? super U>> void sink(U[] pQueue, int half, int qSize) {
+  public static <U extends Comparable<? super U>> void sink(U[] pQueue, int half, int qSize) {
     while(half * 2 <= qSize) {
       int full = half * 2;
       if(full < qSize && less(pQueue, full, full + 1)) {
@@ -33,11 +34,11 @@ public class Heap {
 
   }
   
-  private static <U extends Comparable<? super U>> boolean less(U[] pQueue, int lo, int hi) {
+  public static <U extends Comparable<? super U>> boolean less(U[] pQueue, int lo, int hi) {
     return pQueue[lo - 1].compareTo(pQueue[hi - 1]) < 0;
   }
   
-  private static <U extends Comparable<? super U>> void exch(U[] pQueue, int lo, int hi) {
+  public static <U extends Comparable<? super U>> void exch(U[] pQueue, int lo, int hi) {
     U tmp = pQueue[lo - 1];
     pQueue[lo - 1] = pQueue[hi - 1];
     pQueue[hi - 1] = tmp;

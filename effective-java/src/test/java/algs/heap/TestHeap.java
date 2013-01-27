@@ -6,14 +6,15 @@ import java.util.List;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import algs.utils.ScanRemoteFiles;
+import static algs.utils.ScanRemoteFiles.readStringsInTextFile;
+
 
 public class TestHeap {
   private static String wordsURL = "http://algs4.cs.princeton.edu/24pq/words3.txt"; 
   private static String[] inputs;
   @BeforeClass
   public static void loadTestFiles() throws IOException {
-    List<String> readInputList = ScanRemoteFiles.readStringsInTextFile(wordsURL);
+    List<String> readInputList = readStringsInTextFile(wordsURL);
     inputs = readInputList.toArray(new String[0]);
   }
   
