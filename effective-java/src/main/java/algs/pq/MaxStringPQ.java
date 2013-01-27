@@ -37,6 +37,11 @@ public class MaxStringPQ {
     return qSize;
   }
   
+  /**
+   * Insert key at the bottom of the heap than let it swim
+   * to its proper position
+   * @param key
+   */
   public void insert (String key) {
     if (qSize >= pQueue.length - 1) {
       resize(pQueue.length * 2);
@@ -46,6 +51,11 @@ public class MaxStringPQ {
     checkState(isMaxHeap() == true, "Subtree of pQueue rooted is not a max heap");
   }
   
+  /**
+   * Pop the root, replace it with the last lowest node
+   * than let it sink to its proper place
+   * @return max item in heap
+   */
   public String deleteMax() {
     checkState(!isEmpty(), "Can't delete, priority queue is empty" );
     String max = pQueue[1];
@@ -58,26 +68,39 @@ public class MaxStringPQ {
     checkState(isMaxHeap() == true, "Subtree of pQueue rooted is not a max heap");
     return max;
   }
-  private void swim(int half) {
-    while(half > 1 && less(half/2, half)) {
-      exch(half, half/2);
-      half = half/2;
+  
+  /**
+   * @param key is a node, key/2 is its parent
+   * while key is lower than its parent 
+   * swap it to its immediate parent level
+   * Stop when a swap would violate order
+   */
+  private void swim(int key) {
+    while(key > 1 && less(key/2, key)) {
+      exch(key, key/2);
+      key = key/2;
     }
   }
   
-  private void sink(int half) {
-    while (half * 2 <= qSize) {
-      int full = half * 2;
-      if(full < qSize && less(full, full + 1)) {
-        full++;
+  /**
+   * While key is greater than its children,
+   * swap key with largest child
+   * @param key
+   */
+  private void sink(int key) {
+    while (key * 2 <= qSize) {
+      int child = key * 2;
+      if(child < qSize && less(child, child + 1)) {
+        child++; // find largest child
       }
-      if(!less(half, full)) {
+      if(!less(key, child)) {
         break;
       }
-      exch(half, full);
-      half = full;
+      exch(key, child);
+      key = child;
     }
   }
+  
   private void resize(int capacity) {
     checkArgument(capacity > qSize, "New capacity argument is not greater than current Q size.");
     String[] temp = new String[capacity];
