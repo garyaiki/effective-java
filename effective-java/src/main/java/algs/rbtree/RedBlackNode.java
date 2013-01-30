@@ -6,21 +6,21 @@ package algs.rbtree;
  * @author garystruthers
  *
  */
-public class RedBlackNode {
+public class RedBlackNode<U extends Comparable<? super U>> {
   static final boolean RED = true;
   static final boolean BLACK = false;
   
   String key;
-  String value;
-  RedBlackNode left;
-  RedBlackNode right;
+  U value;
+  RedBlackNode<U> left;
+  RedBlackNode<U> right;
   boolean parentLinkColor;
   int subtreeCount;
   
-  public RedBlackNode(String key, String value, boolean color, int subTreeCount) {
+  public RedBlackNode(String key, U value, boolean color, int subTreeCount) {
     this.key = key;
     this.value = value;
-    this.parentLinkColor = parentLinkColor;
+    this.parentLinkColor = color;
     this.subtreeCount = subTreeCount;
   }
   

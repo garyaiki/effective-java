@@ -4,22 +4,40 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
-public class RedBlackTree {
-  private RedBlackNode root;
+public class RedBlackTree<U extends Comparable<? super U>> {
+  private RedBlackNode<U> root;
+  
+  public RedBlackTree() {
+    super();
+  }
+  
+  public int subTreeSize(RedBlackNode<U> node) {
+    if(node == null) {
+      return 0;
+    }
+    return node.sizeOfSubTree();
+  }
   
   public int treeSize() {
     return root.sizeOfSubTree();
-  }
+  }  
   
   public boolean isTreeEmpty() {
     return root == null;
   }
   
-  public String get(String key) {
+  public boolean isRed(RedBlackNode<U> node) {
+    if(node == null) {
+      return false;
+    }
+    return node.isRed();
+  }
+  
+  public U get(String key) {
      return get(root, key);
   }
   
-  private String get(RedBlackNode node, String key) {
+  private U get(RedBlackNode<U> node, String key) {
     while (node != null) {
       int compResult = key.compareTo(node.key);
       if (compResult < 0) {
@@ -37,20 +55,20 @@ public class RedBlackTree {
     return get(root, key) != null;
   }
   
-  public boolean contains(RedBlackNode node, String key) {
+  public boolean contains(RedBlackNode<U> node, String key) {
     return get(node, key) != null;
   }
   
-  public void put(String key, String value) {
+  public void put(String key, U value) {
     //checkArgument(expression, errorMessage)
-    root = null; // put(root, key, value);
+    root = put(root, key, value);
     root.parentLinkColor = RedBlackNode.BLACK;
     //checkState(expression, errorMessage)
   }
   
-  private RedBlackNode put(RedBlackNode node, String key, String value) {
+  private RedBlackNode<U> put(RedBlackNode<U> node, String key, U value) {
     if(node == null) {
-      return new RedBlackNode(key, value, RedBlackNode.RED, 1);
+      return new RedBlackNode<U>(key, value, RedBlackNode.RED, 1);
     }
     int compResult = key.compareTo(node.key);
     if (compResult < 0) {
@@ -61,52 +79,52 @@ public class RedBlackTree {
       node.value = value;
     }
     
-    if(node.right.isRed() && !node.left.isRed()) {
+    if(isRed(node.right) && !isRed(node.left)) {
       node = rotateLeft(node);
     }
-    if(node.left.isRed() && node.left.left.isRed()) {
+    if(isRed(node.left) && isRed(node.left.left)) {
       node = rotateRight(node);
     }
-    if(node.left.isRed() && node.right.isRed()) {
+    if(isRed(node.left) && isRed(node.right)) {
       toggleColors(node);
     }
-    node.subtreeCount = node.left.subtreeCount + node.right.subtreeCount + 1;
+    node.subtreeCount = subTreeSize(node.left) + subTreeSize(node.right) + 1;
     return node;
   }
   
-  private RedBlackNode rotateRight(RedBlackNode node) {
+  private RedBlackNode<U> rotateRight(RedBlackNode<U> node) {
     checkNotNull(node, "node arg to rotateRight is null");
-    checkArgument(node.left.isRed(), "node.left arg to rotateRight is not RED");
-    RedBlackNode leftChild = node.left;
+    checkArgument(isRed(node.left), "node.left arg to rotateRight is not RED");
+    RedBlackNode<U> leftChild = node.left;
     node.left = leftChild.right;
     leftChild.right = node;
     leftChild.parentLinkColor = leftChild.right.parentLinkColor;
     leftChild.right.parentLinkColor = RedBlackNode.RED;
     leftChild.subtreeCount = node.subtreeCount;
-    node.subtreeCount = node.left.subtreeCount + node.right.subtreeCount + 1;
+    node.subtreeCount = subTreeSize(node.left) + subTreeSize(node.right) + 1;
     return leftChild;
   }
   
-  private RedBlackNode rotateLeft(RedBlackNode node) {
+  private RedBlackNode<U> rotateLeft(RedBlackNode<U> node) {
     checkNotNull(node, "node arg to rotateLeft is null");
     checkArgument(node.right.isRed(), "node.right arg to rotateLeft is not RED");
-    RedBlackNode rightChild = node.right;
+    RedBlackNode<U> rightChild = node.right;
     node.right = rightChild.left;
     rightChild.left = node;
     rightChild.parentLinkColor = rightChild.left.parentLinkColor;
     rightChild.left.parentLinkColor = RedBlackNode.RED;
     rightChild.subtreeCount = node.subtreeCount;
-    node.subtreeCount = node.left.subtreeCount + node.right.subtreeCount + 1;
+    node.subtreeCount = subTreeSize(node.left) + subTreeSize(node.right) + 1;
     return rightChild;
   }
   
-  private void toggleColors(RedBlackNode node) {
+  private void toggleColors(RedBlackNode<U> node) {
     checkNotNull(node, "node arg to toggleColors is null");
     checkNotNull(node.left, "node left arg to toggleColors is null");
     checkNotNull(node.right, "node right arg to toggleColors is null");
-    checkArgument((!node.isRed() && node.left.isRed() && node.right.isRed()), 
+    checkArgument((!isRed(node) && isRed(node.left) && isRed(node.right)), 
         "1. node must have opposite color of its left and right node");
-    checkArgument((node.isRed() && !node.left.isRed() && !node.right.isRed()), 
+    checkArgument((isRed(node) && !isRed(node.left) && !isRed(node.right)), 
         "2. node must have opposite color of its left and right node");
     node.parentLinkColor = !node.parentLinkColor;
     node.left.parentLinkColor = !node.left.parentLinkColor;
