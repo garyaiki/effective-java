@@ -36,20 +36,7 @@ public class RedBlackTree<U extends Comparable<? super U>> {
   public U get(String key) {
      return get(root, key);
   }
-  
-  private U get(RedBlackNode<U> node, String key) {
-    while (node != null) {
-      int compResult = key.compareTo(node.key);
-      if (compResult < 0) {
-        node = node.left;
-      } else if (compResult > 0) {
-        node = node.right;
-      } else {
-        return node.value;
-      }
-    }
-    return null;
-  }
+
   
   public boolean contains(String key) {
     return get(root, key) != null;
@@ -64,6 +51,39 @@ public class RedBlackTree<U extends Comparable<? super U>> {
     root = put(root, key, value);
     root.parentLinkColor = RedBlackNode.BLACK;
     //checkState(expression, errorMessage)
+  }
+  
+  public String select(int rank) {
+    if(rank < 0 || rank >= treeSize()) {
+      return null;
+    }
+    RedBlackNode<U> node = select(root, rank);
+    return node.key;
+  }
+  
+  private RedBlackNode<U> select(RedBlackNode<U> node, int rank) {
+    checkNotNull(node, "node arg to select is null");
+    checkArgument(rank >= 0 && rank < subTreeSize(node), "rank arg to select not in tree size");
+    int temp = subTreeSize(node.left);
+    if(temp > rank) {
+      return select(node.left, rank);
+    } else if (temp < rank) {
+      return select(node.right, rank - temp - 1);
+    } else return node;
+  }
+  
+  private U get(RedBlackNode<U> node, String key) {
+    while (node != null) {
+      int compResult = key.compareTo(node.key);
+      if (compResult < 0) {
+        node = node.left;
+      } else if (compResult > 0) {
+        node = node.right;
+      } else {
+        return node.value;
+      }
+    }
+    return null;
   }
   
   private RedBlackNode<U> put(RedBlackNode<U> node, String key, U value) {
@@ -122,9 +142,9 @@ public class RedBlackTree<U extends Comparable<? super U>> {
     checkNotNull(node, "node arg to toggleColors is null");
     checkNotNull(node.left, "node left arg to toggleColors is null");
     checkNotNull(node.right, "node right arg to toggleColors is null");
-    checkArgument((!isRed(node) && isRed(node.left) && isRed(node.right)), 
-        "1. node must have opposite color of its left and right node");
-    checkArgument((isRed(node) && !isRed(node.left) && !isRed(node.right)), 
+    checkArgument((!isRed(node) && isRed(node.left) && isRed(node.right)) ||
+        (isRed(node) && !isRed(node.left) && !isRed(node.right)), 
+        "1. node must have opposite color of its left and right node" +
         "2. node must have opposite color of its left and right node");
     node.parentLinkColor = !node.parentLinkColor;
     node.left.parentLinkColor = !node.left.parentLinkColor;

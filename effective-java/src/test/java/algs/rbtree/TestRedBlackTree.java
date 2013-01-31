@@ -30,7 +30,8 @@ public class TestRedBlackTree {
     for(String key: inputs) {
       rbTree.put(key, value++);
     }
-    for(String key: inputs) {
+    for(int i = 0; i < rbTree.treeSize(); i++) {
+      String key = rbTree.select(i);
       System.out.format("Key %s Value %d, ", key, rbTree.get(key));
     }
   }
