@@ -4,6 +4,13 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static com.google.common.base.Preconditions.checkState;
 
+/**
+ * java.util.TreeMap is a RedBlack tree
+ * @author garystruthers
+ *
+ * @param <U> any class that implements Comparable
+ * 
+ */
 public class RedBlackTree<U extends Comparable<? super U>> {
   private RedBlackNode<U> root;
   
@@ -11,6 +18,10 @@ public class RedBlackTree<U extends Comparable<? super U>> {
     super();
   }
   
+  /**
+   * @param node
+   * @return the number of nodes beneath the node argument
+   */
   public int subTreeSize(RedBlackNode<U> node) {
     if(node == null) {
       return 0;
@@ -18,6 +29,9 @@ public class RedBlackTree<U extends Comparable<? super U>> {
     return node.sizeOfSubTree();
   }
   
+  /**
+   * @return the number of nodes beneath the root node
+   */
   public int treeSize() {
     return root.sizeOfSubTree();
   }  
@@ -86,6 +100,16 @@ public class RedBlackTree<U extends Comparable<? super U>> {
     return null;
   }
   
+  /**
+   * Balanced tree only has Red left facing nodes, when the new node is Red and right facing
+   * rotate the Red 3 node left changing to a 2 node. If there are two consecutive Red nodes
+   * Rotate them right raising middle node. If both left and right nodes are Red toggle them
+   * and their parent's colors.
+   * @param node if key does not have a node in the tree, create it and mark it Red
+   * @param key if key less than node add to left sub tree of node
+   * @param value
+   * @return
+   */
   private RedBlackNode<U> put(RedBlackNode<U> node, String key, U value) {
     if(node == null) {
       return new RedBlackNode<U>(key, value, RedBlackNode.RED, 1);
