@@ -11,6 +11,9 @@ package ch.classesandinterfaces;
  * This restriction also applies to Clonable and Serializable; neither clone() or readObject()
  * may invoke an overridable method.
  * Serializable readResolve() and writeReplace() must be protected Not private so subclass calls them 
+ * 
+ * Scala adds "sealed" modifier which allows overriding but only in the same source file. This allows only you to define
+ * sub-classes
  */
 public class DesignAndDocumentForInheritance {
 

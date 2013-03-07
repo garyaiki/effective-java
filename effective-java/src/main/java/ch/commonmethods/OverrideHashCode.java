@@ -7,6 +7,10 @@ public class OverrideHashCode {
 	 * Must be consistent in application scope
 	 * equals() -> equal hashCode MOST IMPORTANT this is the contract 
 	 * !equals() Does not require equal hashCode But it is preferred
+	 * 
+	 *  
+	 * Scala "case" class auto-generates equals, hashCode, toString
+
 	 */
 	private String x;
 	private String y;

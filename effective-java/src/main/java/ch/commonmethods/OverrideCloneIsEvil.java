@@ -8,6 +8,8 @@ public class OverrideCloneIsEvil {
 	 * All superclasses must also have a "properley functioning" clone()
 	 * In effect clone() is a problemetic constructor
 	 * Prefer a copy constructor or a static factory
+	 * 
+	 * Scala "case" classes auto-generate a copy method
 	 */
 	private String x;
 	private String y;

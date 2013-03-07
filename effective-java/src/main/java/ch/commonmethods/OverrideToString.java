@@ -7,6 +7,9 @@ public class OverrideToString {
 	 * + when practical, return all interesting information in object
 	 * + if too large summarize 
 	 * + provide programmatic access to all elements in toString
+	 *  
+	 * Scala "case" class auto-generates equals, hashCode, toString
+
 	 */
 	private String x;
 	private String y;

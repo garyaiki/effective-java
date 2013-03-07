@@ -28,6 +28,10 @@ public class MinimizeMutability {
 	 * -Disadvantage is they require an object for each value
 	 * -Serializable final objects containing a mutable must override
 	 * 
+	 * Guava has immutable collections
+	 * Scala "val" is immutable, "var" is mutable. Scala has immutable collection packages. 
+	 * val fields have only getters, var has setters
+	 * 
 	 */
 	// making immutables shareable
 	public static final String ZERO = "0";

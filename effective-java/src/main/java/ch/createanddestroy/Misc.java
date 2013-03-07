@@ -3,6 +3,13 @@ package ch.createanddestroy;
 import java.util.Calendar;
 import java.util.TimeZone;
 
+/**
+ * @author garystruthers
+ * 
+ * Scala doesn't have static instead it has an "object" singleton which is lazy (not evaluated untill called)
+ * A Scala object can have a "companion class" with the same name. Companions have access to each other's private fields.
+ *
+ */
 public class Misc {
 	// Item 4 private constructor
 	private Misc() {

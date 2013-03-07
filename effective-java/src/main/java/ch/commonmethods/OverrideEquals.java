@@ -17,6 +17,8 @@ public class OverrideEquals {
  * Symmetric x.equals(y) -> y.equals(x)
  * Transitive x.equals(y) and y.equals(z) -> x.equals(z)
  * Consistent x.equals(y) is consistently true or consistently false
+ * 
+ * Scala "case" class auto-generates equals, hashCode, toString
 
 	@Override // for classes when equals should never be called
 	public boolean equals(Object obj) {
