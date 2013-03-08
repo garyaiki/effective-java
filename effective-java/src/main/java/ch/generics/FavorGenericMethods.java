@@ -10,6 +10,13 @@ import java.util.Set;
 
 /* Item 27
  * 
+ * Scala [-P, +R] contravarient parmeter type, covarient return type
+ * contravarient can only pass a subtype, a String argument can accept only String and its subTypes
+ * covarient method can return a String to a val of Any
+ * Use invarient arguments only for mutable objects  
+ * 
+ * Scala Upper bound T <: A means T is a subtype of A (A is the upper bound)
+ * Scala Lower bound T >: A means T is a supertype of A (A is the lower bound)
  */
 public class FavorGenericMethods  {
 	

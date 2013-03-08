@@ -5,6 +5,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
 /* Item 71
  * Use lazy initialization judiciously
  * Unless a field is usually not used and it is expensive to initialize eager initialization is preferred
+ * 
+ * Scala has "lazy" modifier a val isn't initialized until executed
  */
 public class LazyInitialization {
 	/*

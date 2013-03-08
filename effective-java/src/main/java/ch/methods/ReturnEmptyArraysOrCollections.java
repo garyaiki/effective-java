@@ -9,6 +9,10 @@ import java.util.List;
  * 
  * There is no reason ever to return null from an array or collection instead of returning an
  * empty array or collection
+ * 
+ * Scala "Option" is a collection type that has only one value "None" or "Some" Methods that return an Option
+ * indicate whether they contain a value. Scala Map.get returns Option.Some value or Option None
+ * Scala methods that return Scala.Nothing means the method failed. 
  */
 
 public class ReturnEmptyArraysOrCollections {
