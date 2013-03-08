@@ -15,6 +15,10 @@ import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveAction;
 
+/**
+ * @author garystruthers
+ * Scala parallel collections wrap fork/join, good for things where processing order doesn't matter, like map,filter,flatMap,forAll
+ */
 public class Solver extends RecursiveAction {
 	private int[] list;
 	public long result;
