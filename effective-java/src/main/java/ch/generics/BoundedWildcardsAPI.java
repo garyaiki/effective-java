@@ -7,6 +7,9 @@ import java.util.Collection;
  * All comparables and comparators are consumers
  * DO NOT USE WILDCARDS as RETURN TYPES
  * Wildcards make APIs more flexible but are very tricky
+ * 
+ * Scala Upper bound T <: A means T is a subtype of A (A is the upper bound)
+ * Scala Lower bound T >: A means T is a supertype of A (A is the lower bound)
  */
 public class BoundedWildcardsAPI {
 	/*
