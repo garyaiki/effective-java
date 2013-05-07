@@ -7,7 +7,7 @@ import com.google.common.base.Optional;
  * Item 30
  * +typesafe
  * +immutable
- * +a gereralization of singleton
+ * +a generalization of singleton
  * +printable toString()
  * +may add methods and fields and implement interfaces
  * +implement all Object methods and Comparable, Serializable interfaces

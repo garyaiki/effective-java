@@ -3,7 +3,7 @@ package ch.generics;
 import java.util.Collection;
 
 /* Item 28
- * PECS memonic Producer Extends, Consumer Super 
+ * PECS mnemonic Producer Extends, Consumer Super 
  * All comparables and comparators are consumers
  * DO NOT USE WILDCARDS as RETURN TYPES
  * Wildcards make APIs more flexible but are very tricky

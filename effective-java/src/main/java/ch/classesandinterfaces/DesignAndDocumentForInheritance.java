@@ -2,7 +2,7 @@ package ch.classesandinterfaces;
 
 /* Item 17
  * Overridden public, package-private methods and constructors must describe
- * what it overrides and if they're called befor or after
+ * what it overrides and if they're called before or after
  * By convention the comment ends with "This implementation" precisely describing the override
  * This convention problematically exposes implementation details
  * Test classes intended for subclasses by writing subclasses

@@ -1,8 +1,8 @@
 package ch.general;
 /* Item 49
- * Boxed primitivies have identies distinct from their values, they can have be null
+ * Boxed primitives have identities distinct from their values, they can have be null
  * primitives more efficient 
- * Use Boxed primitivies where necessary; in Collections and for parameterized types
+ * Use Boxed primitives where necessary; in Collections and for parameterized types
  */
 public class PrimativesOverBoxedPrimitives {
 

@@ -6,7 +6,7 @@ import java.util.TimeZone;
 /**
  * @author garystruthers
  * 
- * Scala doesn't have static instead it has an "object" singleton which is lazy (not evaluated untill called)
+ * Scala doesn't have static instead it has an "object" singleton which is lazy (not evaluated until called)
  * A Scala object can have a "companion class" with the same name. Companions have access to each other's private fields.
  *
  */
@@ -16,7 +16,7 @@ public class Misc {
 		// Item 5 don't create unnecessary objects
 		String s = "not calling new String";
 	}
-	// Use static initializers for onetime creation of expensive objects
+	// Use static initializers for one time creation of expensive objects
 	static {
 		Calendar gmtCal = Calendar.getInstance(TimeZone.getTimeZone("GMT"));
 	}
